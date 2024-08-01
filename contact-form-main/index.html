@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Karla:ital,wght@0,200..800;1,200..800&family=Playfair+Display&family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <link rel="stylesheet" href="styles.css">
+  <title>Frontend Mentor | Contact form</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+  </style>
+</head>
+<body>
+  <div class="container">
+  <form>
+    
+  <h1>
+  Contact Us
+  </h1>
+   <div class="cero">
+    <div class="one">
+  <p>First Name *</p>   
+  <input type="text" required> 
+    </div>
+    <div class="two">
+  <p>Last Name *</p>
+  <input type="text" required>
+    </div>
+
+
+    </div>
+  <label>Email Address *</label>
+  <input type="email" id="valid">
+
+  <h3>Query Type *</h3>
+  <div class="cero">
+  <div class="three"><input type="radio" name="query_type" value="Enquiry" id="enquiry">General Enquiry</div>
+  <div class="four"><input type="radio" name="query_type" value="Support" id="request">Support Request</div>
+  </div>
+
+  <h3>Message *</h3>
+
+
+  <textarea class="text" required></textarea>
+
+  <div class="footer">
+  <input type="checkbox" id="consent"><p>I consent to being contacted by the team</p>
+  </div>
+
+<button onclick="Submit()" id="submit">Submit</button>
+</form>
+</div>
+<script>
+    const consent = document.getElementById("consent");
+    const enquiry = document.getElementById("enquiry");
+    const request = document.getElementById("request");  
+   
+    let valid = document.querySelector("#valid");
+    
+
+    function Submit(){
+
+      let validValue = valid.value;
+      const emailRegex = /^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+[.][A-Za-z]{2,4}$/;
+      const isValid = emailRegex.test(validValue);
+
+      if(!consent.checked && !enquiry.checked && !request.checked){
+        alert("Please consent to being contacted")
+        alert("Please select a query typeTo submit this form")
+      }
+      else if(!enquiry.checked && !request.checked){
+        alert("Please select a query typeTo submit this form")
+      }
+      else if(!consent.checked){
+        alert("Please consent to being contacted")
+      }
+      else if(isValid!=true){
+          alert("Please enter a valid email address")
+      }
+      else{
+        alert("Message Sent! Thanks for completing the form. We'll be in touch soon!")
+      }
+    }
+    
+  </script>
+
+</body>
+</html>
